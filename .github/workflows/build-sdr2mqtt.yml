@@ -1,6 +1,9 @@
 name: Build SDR2MQTT images
 
 on:
+  push:
+    branches:
+      - fix/ha-2026-build
   workflow_dispatch:
     inputs:
       version:
@@ -60,9 +63,9 @@ jobs:
           context: ./sdr2mqtt
           container-registry-password: ${{ secrets.GITHUB_TOKEN }}
           image: ${{ matrix.image }}
-          image-tags: ${{ github.event.release.tag_name || inputs.version }}
+          image-tags: ${{ github.event.release.tag_name || inputs.version || 'edge' }}
           push: ${{ github.event_name == 'release' || inputs.publish }}
-          version: ${{ github.event.release.tag_name || inputs.version }}
+          version: ${{ github.event.release.tag_name || inputs.version || 'edge' }}
 
   manifest:
     name: Publish multi-architecture image
@@ -79,4 +82,4 @@ jobs:
           architectures: ${{ env.ARCHITECTURES }}
           container-registry-password: ${{ secrets.GITHUB_TOKEN }}
           image-name: ${{ env.IMAGE_NAME }}
-          image-tags: ${{ github.event.release.tag_name || inputs.version }}
+          image-tags: ${{ github.event.release.tag_name || inputs.version || 'edge' }}
