@@ -20,9 +20,11 @@ EXPIRE_AFTER="$(bashio::config 'expire_after')"
 
 # Exit immediately if a command exits with a non-zero status:
 set -e
+set -o pipefail
+export MQTT_HOST MQTT_PORT MQTT_USERNAME MQTT_PASSWORD MQTT_TOPIC MQTT_RETAIN DISCOVERY_PREFIX DISCOVERY_INTERVAL WHITELIST_ENABLE WHITELIST AUTO_DISCOVERY DEBUG EXPIRE_AFTER
 
 export LANG=C
-PATH="/usr/local/bin:/usr/local/sbin:/usr/bin:/usr/sbin:/bin:/sbin"
+export PATH="/usr/local/bin:/usr/local/sbin:/usr/bin:/usr/sbin:/bin:/sbin"
 export LD_LIBRARY_PATH=/usr/local/lib64
 
 # Start the listener and enter an endless loop
@@ -30,7 +32,6 @@ bashio::log.blue "::::::::Starting RTL_433 with parameters::::::::"
 bashio::log.info "MQTT Host =" $MQTT_HOST
 bashio::log.info "MQTT port =" $MQTT_PORT
 bashio::log.info "MQTT User =" $MQTT_USERNAME
-bashio::log.info "MQTT Password =" $(echo $MQTT_PASSWORD | sha256sum | cut -f1 -d' ')
 bashio::log.info "MQTT Topic =" $MQTT_TOPIC
 bashio::log.info "MQTT Retain =" $MQTT_RETAIN
 bashio::log.info "PROTOCOL =" $PROTOCOL
@@ -45,4 +46,7 @@ bashio::log.info "AUTO_DISCOVERY =" $AUTO_DISCOVERY
 bashio::log.info "DEBUG =" $DEBUG
 bashio::log.blue "::::::::rtl_433 running output::::::::"
 
-rtl_433 $FREQUENCY $PROTOCOL -C $UNITS  -F mqtt://$MQTT_HOST:$MQTT_PORT,user=$MQTT_USERNAME,pass=$MQTT_PASSWORD,retain=$MQTT_RETAIN,events=$MQTT_TOPIC/events,states=$MQTT_TOPIC/states,devices=$MQTT_TOPIC[/model][/id][/channel:A]  -M time:tz:local -M protocol -M level | /scripts/rtl_433_mqtt_hass.py
+read -r -a FREQUENCY_ARGS <<< "$FREQUENCY"
+read -r -a PROTOCOL_ARGS <<< "$PROTOCOL"
+MQTT_URL="mqtt://$MQTT_HOST:$MQTT_PORT,user=$MQTT_USERNAME,pass=$MQTT_PASSWORD,retain=$MQTT_RETAIN,events=$MQTT_TOPIC/events,states=$MQTT_TOPIC/states,devices=$MQTT_TOPIC[/model][/id][/channel]"
+rtl_433 "${FREQUENCY_ARGS[@]}" "${PROTOCOL_ARGS[@]}" -C "$UNITS" -F "$MQTT_URL" -M time:tz:local -M protocol -M level | /scripts/rtl_433_mqtt_hass.py

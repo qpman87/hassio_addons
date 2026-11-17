@@ -86,7 +86,7 @@ mappings = {
         "config": {
             "device_class": "enum",
             "name": "device_channel",
-            "options": ["A", "B", "C"],
+            "options": ["1", "2", "3", "unknown"],
             "entity_category": "diagnostic",
             "value_template": "{{ value }}"
         }
@@ -670,7 +670,7 @@ def bridge_event_to_hass(mqttc, topic, data):
     if "channel" in data:
         channel = str(data["channel"])
     else:
-        channel = 'A'
+        channel = 'unknown'
 
     device = '{}-{}'.format(data['id'],data['model'])
      
