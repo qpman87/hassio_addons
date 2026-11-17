@@ -1,10 +1,6 @@
-<div align="center">
-<img src="images/slacker_labs.png">
-<h1>Home Assistant Add-ons</h1>
-<br>
-</div>
+# Home Assistant Add-ons
 
-A collection of Home Assistant add-ons maintained by Edgar Vasilenco.
+Home Assistant add-ons for RTL-SDR, RTL_433 and MQTT. Receive wireless sensor data and bring it directly into Home Assistant.
 
 ## Installation
 
