@@ -1,4 +1,10 @@
 # Changelog
+## [0.1.25]
+- Modernized Docker build compatibility and add-on startup.
+- Improved RTL_433 argument handling and error propagation.
+- Corrected numeric channel handling for channels 1, 2 and 3.
+- Removed MQTT password hash logging.
+
 All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
