@@ -1,6 +1,31 @@
-# Home Assistant Add-on: SDR2mqtt
+# Home Assistant Add-on: SDR2MQTT
+> **Simple installation – just install and play!**
+>
+> No separate RTL_433 add-on or additional helper add-ons are required. Everything needed to receive and forward your sensor data is included.
+>
+> **Tested with:** DVB-T2 USB TV stick (RTL-SDR compatible).
+>
+> Simply install the add-on, enter your MQTT credentials, select the frequency and protocol IDs used by your sensors, and start it. That is it!
+
 
 A Home Assistant addon for a software defined radio tuned to listen for RF transmissions from SDR/RTL Sensors and republish the data via MQTT.
+
+## About this fork
+
+This add-on is an updated and maintained fork of the original SDR2MQTT add-on by Jeffrey Stone (Slacker Labs).
+
+I created this fork because the original project was no longer actively maintained. As a result, compatibility issues arose with newer Home Assistant releases, and the original add-on could no longer be installed on newer Home Assistant versions starting around May 2026.
+
+Rather than let this useful project become unusable, I decided to continue its development, update its build system, fix compatibility issues, and keep it working with modern Home Assistant installations.
+
+**What you should know:**
+- This project is based on the original work by Jeffrey Stone.
+- Original copyright notices and attribution are preserved.
+- The fork is independently maintained by Edgar Vasilenco.
+- It includes compatibility fixes, updated builds and ongoing improvements.
+
+Thanks to Jeffrey Stone for creating the original project and making this continuation possible.
+
 
 ## Installation
 

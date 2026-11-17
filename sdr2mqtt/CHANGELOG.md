@@ -1,4 +1,9 @@
 # Changelog
+## [0.1.26]
+- Set Oregon Scientific (protocol 12) and InFactory (protocol 91) as the default RTL_433 decoders.
+- Archived the separate Acurite add-on.
+- Updated fork branding and documentation.
+
 ## [0.1.25]
 - Modernized Docker build compatibility and add-on startup.
 - Improved RTL_433 argument handling and error propagation.
