@@ -29,11 +29,16 @@ Thanks to Jeffrey Stone for creating the original project and making this contin
 
 ## Installation
 
-Add the repository URL under **Supervisor → Add-on store → ⋮ → Manage add-on repositories**:
+1. Open **Settings → Apps → Install apps**.
+2. Click the **three-dot menu (⋮)** in the top-right corner.
+3. Select **Repositories**.
+4. Add the repository URL:
 
-    https://github.com/qpman87/hassio_addons
+```text
+https://github.com/qpman87/hassio_addons
+```
 
-Then search for `SDR to home Assistant` and install it.
+Then search for `SDR to Home Assistant` and install it.
 
 ## Configuration
 
