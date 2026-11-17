@@ -2,15 +2,24 @@
 <img src="images/slacker_labs.png">
 <h1>Home Assistant Add-ons</h1>
 <br>
+</div>
+
+A collection of Home Assistant add-ons maintained by Edgar Vasilenco.
 
 ## Installation
 
-Add the repository URL under **Supervisor → Add-on store → ⋮ → Manage add-on repositories**:
+Add the repository URL under **Settings → Add-ons → Add-on Store → ⋮ → Repositories**:
 
-    https://github.com/qpman87/hassio_addons
+```text
+https://github.com/qpman87/hassio_addons
+```
 
-The repository includes two add-ons:
+## Available Add-ons
 
-- **acurite2mqtt** is a beta release that uses uses a SDR to connect Acurite Weather Sensors to Home Assistant
-    
-- **sdr2mqtt** is a beta release that uses SDR to connect any RF device that is supported by the RTL_433 project and push them to Home Assistant
+### SDR2MQTT
+
+Receive wireless sensor data using an RTL-SDR-compatible USB receiver and [RTL_433](https://github.com/merbanan/rtl_433), then publish it to Home Assistant via MQTT.
+
+- Automatic Home Assistant MQTT discovery.
+- No separate RTL_433 add-on or helper add-ons required.
+- Supports RF devices compatible with RTL_433.
