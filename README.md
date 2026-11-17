@@ -4,7 +4,10 @@ Home Assistant add-ons for RTL-SDR, RTL_433 and MQTT. Receive wireless sensor da
 
 ## Installation
 
-Add the repository URL under **Settings → Add-ons → Add-on Store → ⋮ → Repositories**:
+1. Open **Settings → Apps → Install apps**.
+2. Click the **three-dot menu (⋮)** in the top-right corner.
+3. Select **Repositories**.
+4. Add the repository URL:
 
 ```text
 https://github.com/qpman87/hassio_addons
