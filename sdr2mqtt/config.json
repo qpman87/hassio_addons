@@ -18,7 +18,7 @@
     "mqtt_topic": "rtl_433",
     "mqtt_retain": "true",
     "frequency": "-f 433.92M",
-    "protocol": "-R 40",
+    "protocol": "-R 12 -R 91",
     "whitelist_enable": "false",
     "whitelist": "",
     "expire_after": 0,

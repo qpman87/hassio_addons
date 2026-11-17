@@ -15,13 +15,13 @@ Then search for `SDR to home Assistant` and install it.
 Example add-on configuration:
 
 ```yaml
-mqtt_host: 192.168.7.100
+mqtt_host: 192.168.x.x
 mqtt_user: mqtt_user
 mqtt_password: mqtt_pass
 mqtt_topic: rtl_433
 mqtt_retain: 'true'
 frequency: '-f 433.92M'
-protocol: ''
+protocol: '-R 12 -R 91'
 units: 'si'
 discovery_prefix: homeassistant
 discovery_interval: 600
@@ -57,11 +57,7 @@ of you could use mutliples like '-f 433.92M f 915M'
 
 ### Option: `protocol`
 
-This determines what devices the software listens to. `-R 11 -R 40 -R 41 -R 55 -R 74` 
-is the Accurite sensors. If the protocol is blank it will listen for all devices
-which may be noisy. Blank is the default with this addon. Consult the following readme for protocols. 
-
-For all possible protocols visit <https://github.com/qpman87/hassio_addons/blob/fix/ha-2026-build/acurite2mqtt/PROTOCOLS.md>
+This determines which RTL_433 decoders the software listens to. By default, SDR2MQTT listens for Oregon Scientific sensors (`-R 12`) and InFactory / nor-tec / FreeTec sensors (`-R 91`). You can add or change decoder IDs to support other devices. See the [RTL_433 supported devices](https://github.com/merbanan/rtl_433) for the available protocols.
 
 ### Option: `expire_after`
 
