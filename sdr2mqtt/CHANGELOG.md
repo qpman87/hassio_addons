@@ -1,4 +1,8 @@
 # Changelog
+## [0.1.28]
+- Hardened handling of RTL_433 events with missing, null, or empty device IDs.
+- Preserved native device IDs unchanged, including zero.
+
 ## [0.1.27]
 - Fixed MQTT listener crash when receiving RTL_433 device events without an ID.
 
