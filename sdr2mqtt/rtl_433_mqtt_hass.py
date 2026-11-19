@@ -658,27 +658,26 @@ def bridge_event_to_hass(mqttc, topic, data):
         return
     model = sanitize(data["model"])
 
-    if "id" in data:
-        instance = str(data["id"])
-    else:
-        instance = 0
-        
-    if instance == 0:
-        logging.warning("Device event for model {} has no valid ID. Skipping.".format(data.get('model', 'Unknown')))
+    native_id = data.get("id")
+    if native_id is None or str(native_id).strip() == "":
+        logging.warning("Device event for model {} has no valid ID. Skipping.".format(data.get("model", "Unknown")))
         return
-        
+
+    # Preserve the native RTL_433 ID exactly as received.
+    instance = str(native_id)
+
     if "channel" in data:
         channel = str(data["channel"])
     else:
         channel = 'unknown'
 
-    device = '{}-{}'.format(data['id'],data['model'])
+    device = '{}-{}'.format(instance,data['model'])
      
     if (whitelist_on == True) and (instance not in whitelist_list):
         # Let's reduce the noise in the log and hide the duplicate notifications.
         if (instance not in blocked):
-            logging.info("Device Id:{} Model: {} not in whitelist. Add to the Whitelist to create device in Home Assistant.".format(data['id'],data['model']))
-        blocked.append('{}'.format(data['id']))
+            logging.info("Device Id:{} Model: {} not in whitelist. Add to the Whitelist to create device in Home Assistant.".format(instance,data['model']))
+        blocked.append('{}'.format(instance))
         return
 
     if (auto_discovery == True):
