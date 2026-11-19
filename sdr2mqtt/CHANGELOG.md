@@ -1,4 +1,7 @@
 # Changelog
+## [0.1.27]
+- Fixed MQTT listener crash when receiving RTL_433 device events without an ID.
+
 ## [0.1.26]
 - Set Oregon Scientific (protocol 12) and InFactory (protocol 91) as the default RTL_433 decoders.
 - Archived the separate Acurite add-on.

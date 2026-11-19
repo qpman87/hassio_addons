@@ -664,7 +664,7 @@ def bridge_event_to_hass(mqttc, topic, data):
         instance = 0
         
     if instance == 0:
-        logging.warning("Device Id:{} doesn't appear to be a actual device. Skipping..".format(data['id']))
+        logging.warning("Device event for model {} has no valid ID. Skipping.".format(data.get('model', 'Unknown')))
         return
         
     if "channel" in data:
